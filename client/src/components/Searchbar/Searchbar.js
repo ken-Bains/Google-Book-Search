@@ -12,8 +12,8 @@ class Searchbar extends Component {
             [name]: value
         });
     };
+
     handleSubmit = event => {
-        console.log("submited")
         event.preventDefault();
         this.setState({
             bookName: ""
