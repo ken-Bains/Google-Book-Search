@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+import React from "react";
+import { BrowserRouter as Router, Route} from "react-router-dom";
+import Home from "./pages/Home/Home"
+import './assets/css/App.css'
+=======
 
 import React, { Component } from "react";
 import logo from "./logo.svg";
@@ -18,11 +24,12 @@ import API from "./utils/API";
       .catch(err => console.log(err));
   };
 
+>>>>>>> 765248d03720d0d193f9a85a5a248db3f284d986
 function App() {
   return (
    
     <Router>
-      <div> 
+      <div className="homePage"> 
           <Route exact path="/" component={Home}></Route>
       </div>
     </Router>
