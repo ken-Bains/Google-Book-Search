@@ -11,7 +11,14 @@ router.get("/api/books", (req, res) => {
 
 router.post("/api/books", (req, res) => {
   db.Book.create(req.body)
-    .then(results => res.json(results.data))
+    .then(results => res.json(results))
+    .catch(err => res.status(422).json(err));
+});
+
+router.delete("/api/books/:id", (req, res) => {
+  db.Book.findById({ _id: req.params.id })
+    .then(dbModel => dbModel.remove())
+    .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
 

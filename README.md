@@ -1,29 +1,63 @@
-# Create React Express App
+# Google-Book-Search
 
-## About This Boilerplate
+## Summary 
+Using Google Books API, this app allows you to search and save book information in order to create a reading list. You can view more information via a link to Google books and remove books from your reading list. 
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Link to site
+[Demo](https://secure-hollows-12420.herokuapp.com/)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Site Clip
+![Site](assets/google-books.mp4)
 
-## Starting the app locally
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Technologies Used
+- HTML - used to create elements on the DOM
+- CSS - styles html elements on page
+- Git - version control system to track changes to source code
+- GitHub - hosts repository that can be deployed to GitHub Pages
+- Mongo - MongoDB is a cross-platform document-oriented database program.
+- Mongoose - Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.
+- Express - Web application framework for Node.js. Designed for building web applications and APIs.
+- Node JS - An open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a browser.
+- React - JavaScript library for building user interfaces.
+- Axios - Promise based HTTP client for the browser and node.js
+- React Bootstap - React specific Bootstrap used for styling
+- Heroku - Heroku is a cloud platform as a service supporting several programming languages.
+
+
+## Code Snippet
+```javascript
+    import React, { createContext, useReducer } from "react";
+
+    const BookContext = createContext();
+
+    const bookReducer = (state, action) => {
+        switch (action.type) {
+            case "ADD_ITEM":
+                return [...state, action.book]
+            case "REMOVE_ITEM":
+                return state.filter(item => item.id !== action.book.id)
+            default:
+                return state
+        };
+    }
+
+    const BookContextProvider = (props) => {
+        const [savedBooks, dispatch] = useReducer(bookReducer, []);
+
+        return (
+            <BookContext.Provider value={{ savedBooks, dispatch }}>
+                {props.children}
+            </BookContext.Provider>
+        )
+    }
+
+    export {BookContextProvider, BookContext};  
 
 ```
-npm install
-```
+- The code snippit above is an example of React hooks context and provider.
 
-This should install node modules within the server and the client folder.
 
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## Author Links
+[LinkedIn](https://www.linkedin.com/in/ken-bains)
+[GitHub](https://github.com/ken-Bains)

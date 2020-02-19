@@ -13,7 +13,6 @@ const Search = () => {
     function searchBook(e) {
         e.preventDefault();
         API.getBooks(searchInputValue.current.value).then(response => {
-            console.log(response.data.items);
             setSearchList(response.data.items);
             searchInputValue.current.value = "";
         })
@@ -28,6 +27,7 @@ const Search = () => {
             title: book.volumeInfo.title
         }
         API.saveBook(bookItem).then(res =>{
+            bookItem["id"] = res.data._id;
             dispatch({type: "ADD_ITEM", book: bookItem})
         })
     }

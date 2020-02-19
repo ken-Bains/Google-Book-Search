@@ -10,8 +10,8 @@ saveBook: function(postData){
     return axios.post("/api/books", postData);
 },
 // Will delete the book given an id
-deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
+deleteBook: function(book) {
+    return axios.delete("/api/books/" + book);
   },
 // Will load your single HTML page
 getBook: function(id) {
