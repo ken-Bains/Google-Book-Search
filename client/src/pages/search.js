@@ -20,8 +20,16 @@ const Search = () => {
     }
 
     function saveBook(book) {
-        dispatch({type: "ADD_ITEM", book: book})
-        console.log("sa");
+        const bookItem = {
+            authors: book.volumeInfo.authors,
+            description: book.volumeInfo.description,
+            image: book.volumeInfo.imageLinks.smallThumbnail,
+            link: book.volumeInfo.infoLink,
+            title: book.volumeInfo.title
+        }
+        API.saveBook(bookItem).then(res =>{
+            dispatch({type: "ADD_ITEM", book: bookItem})
+        })
     }
 
     return (
