@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import SearchResults from "../components/searchComponents/searchResults";
+import { BookContext } from "../utils/bookProvider";
 
 const Saved = () => {
+    const { savedBooks, dispatch } = useContext(BookContext);
+
+    function deleteBook(book) {
+        dispatch({type: "REMOVE_ITEM", book: book})
+    }
+
     return (
         <div>
-            saved
+            <SearchResults searchList={savedBooks} deleteBook={deleteBook} isSavedPage={true}/>
         </div>
     )
 }
