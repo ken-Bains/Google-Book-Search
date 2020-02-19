@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
 // Gets all books
-getBooks: function(){
-    return axios.get("/api/books");
+getBooks: function(searchTerm){
+    return axios.get("/api/books", { params: { q: searchTerm } });
 },
 // Will be used to save a new book
 saveBook: function(postData){
